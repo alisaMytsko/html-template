@@ -16,6 +16,7 @@ module.exports = merge(common, {
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
+    new Webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
       filename: 'bundle.css',
     }),
@@ -29,7 +30,7 @@ module.exports = merge(common, {
       },
       {
         test: /\.s?css/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
